@@ -1,0 +1,30 @@
+# NAME: GojekGoPay
+# AUTHOR: q2334336724
+# UPDATED: 2026-06-03
+# DOMAIN: 9
+# DOMAIN-SUFFIX: 9
+# TOTAL: 18
+payload:
+  # Core Gojek / GoPay
+  - DOMAIN-SUFFIX,gojekapi.com
+  - DOMAIN-SUFFIX,gopayapi.com
+  - DOMAIN-SUFFIX,gopay.co.id
+  - DOMAIN-SUFFIX,goto-products.com
+
+  # Assets, auth, identity, and finance surfaces observed in capture data
+  - DOMAIN-SUFFIX,gojek.com
+  - DOMAIN-SUFFIX,gojek.link
+  - DOMAIN-SUFFIX,goidentitas.id
+  - DOMAIN-SUFFIX,gofin.co.id
+  - DOMAIN-SUFFIX,findaya.co.id
+
+  # Explicit hostnames observed in request Host / :authority
+  - DOMAIN,api.gojekapi.com
+  - DOMAIN,i.gojekapi.com
+  - DOMAIN,i-integration.gojekapi.com
+  - DOMAIN,gopay-raccoon.gojekapi.com
+  - DOMAIN,customer.gopayapi.com
+  - DOMAIN,static.asset.gopay.co.id
+  - DOMAIN,accounts.goto-products.com
+  - DOMAIN,gateway.paylater.gofin.co.id
+  - DOMAIN,assets.goidentitas.id
