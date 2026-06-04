@@ -11,6 +11,7 @@
 # PROCESS-NAME: 6
 # TOTAL: 701
 payload:
+  - DOMAIN-SUFFIX,hezu.ink
   - DOMAIN,voice.telephony.goog
   - DOMAIN-SUFFIX,0emm.com
   - DOMAIN-SUFFIX,1e100.net
