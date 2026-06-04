@@ -12,6 +12,7 @@
 # TOTAL: 701
 payload:
   - DOMAIN-SUFFIX,hezu.ink
+  - DOMAIN-SUFFIX,muyuan.do
   - DOMAIN,voice.telephony.goog
   - DOMAIN-SUFFIX,0emm.com
   - DOMAIN-SUFFIX,1e100.net
