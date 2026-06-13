@@ -14,6 +14,8 @@ payload:
   - DOMAIN-SUFFIX,hezu.ink
   - DOMAIN-SUFFIX,muyuan.do
   - DOMAIN-SUFFIX,anyrouter.top
+  - DOMAIN-SUFFIX,x666.me
+  - DOMAIN-SUFFIX,elysiver.h-e.top
 # 俩个中转站
   - DOMAIN,voice.telephony.goog
   - DOMAIN-SUFFIX,0emm.com
