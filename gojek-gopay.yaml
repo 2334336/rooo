@@ -28,3 +28,5 @@ payload:
   - DOMAIN,accounts.goto-products.com
   - DOMAIN,gateway.paylater.gofin.co.id
   - DOMAIN,assets.goidentitas.id
+
+  - DOMAIN-SUFFIX,TempMail.lol
