@@ -1,11 +1,11 @@
 payload:
-   - DOMAIN-SUFFIX,linux.do
-   - DOMAIN-SUFFIX,sharedchat.cc
-   - DOMAIN-SUFFIX,1946lao.com
-   - DOMAIN-SUFFIX,betvictor.com
-   - DOMAIN,fc.115004.xyz,DIRECT
-   - DOMAIN,youxuan.cf.090227.xyz,DIRECT
-   - DOMAIN-SUFFIX,090227.xyz,DIRECT
-   - DOMAIN-SUFFIX,115004.xyz,DIRECT
-   - DOMAIN,www.visa.cn,DIRECT
-   - DOMAIN-SUFFIX,xunlei.com,DIRECT
+  - DOMAIN-SUFFIX,linux.do
+  - DOMAIN-SUFFIX,sharedchat.cc
+  - DOMAIN-SUFFIX,1946lao.com
+  - DOMAIN-SUFFIX,betvictor.com
+  - DOMAIN,fc.115004.xyz
+  - DOMAIN,youxuan.cf.090227.xyz
+  - DOMAIN-SUFFIX,090227.xyz
+  - DOMAIN-SUFFIX,115004.xyz
+  - DOMAIN,www.visa.cn
+  - DOMAIN-SUFFIX,xunlei.com
