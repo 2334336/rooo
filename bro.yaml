@@ -8,3 +8,5 @@ payload:
   - DOMAIN-SUFFIX,115004.xyz
   - DOMAIN,www.visa.cn
   - DOMAIN-SUFFIX,xunlei.com
+  - DOMAIN,api.day.app
+  - DOMAIN-SUFFIX,gitee.com
