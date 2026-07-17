@@ -1,0 +1,32 @@
+# NAME: PredictionMarket
+# UPDATED: 2026-07-17
+# SOURCES:
+#   - https://polymarket.com/zh
+#   - https://linux.do/
+# FORMAT: Mihomo classical rule provider
+payload:
+  # Polymarket first-party services and assets
+  - DOMAIN-SUFFIX,polymarket.com
+  - DOMAIN-SUFFIX,polymarket.dev
+  - DOMAIN-SUFFIX,polymarket.sh
+  - DOMAIN-SUFFIX,polymarket.us
+  - DOMAIN,polymarket-upload.s3.us-east-2.amazonaws.com
+  - DOMAIN,polymarket-next-assets.s3.amazonaws.com
+  - DOMAIN,polymarket-video-ea81y.b-cdn.net
+
+  # Wallet, realtime data, and Polygon RPC services used by Polymarket
+  - DOMAIN-SUFFIX,walletconnect.com
+  - DOMAIN-SUFFIX,walletconnect.org
+  - DOMAIN-SUFFIX,web3modal.org
+  - DOMAIN-SUFFIX,magic.link
+  - DOMAIN-SUFFIX,walletlink.org
+  - DOMAIN,ws-us3.pusher.com
+  - DOMAIN-SUFFIX,polygon-rpc.com
+  - DOMAIN-SUFFIX,alchemy.com
+  - DOMAIN-SUFFIX,alchemyapi.io
+  - DOMAIN-SUFFIX,quiknode.pro
+  - DOMAIN-SUFFIX,relay.link
+
+  # Linux.do and its static asset infrastructure
+  - DOMAIN-SUFFIX,linux.do
+  - DOMAIN-SUFFIX,ldstatic.com
