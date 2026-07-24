@@ -27,6 +27,3 @@ payload:
   - DOMAIN-SUFFIX,quiknode.pro
   - DOMAIN-SUFFIX,relay.link
 
-  # Linux.do and its static asset infrastructure
-  - DOMAIN-SUFFIX,linux.do
-  - DOMAIN-SUFFIX,ldstatic.com
