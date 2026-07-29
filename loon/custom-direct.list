@@ -1,0 +1,7 @@
+# Loon custom direct — 与 mihomo custom-direct 同款
+# 引用时策略选 DIRECT，或使用下方已写死 DIRECT 的完整规则
+IP-CIDR,192.168.4.142/32,DIRECT,no-resolve
+DOMAIN-SUFFIX,bing.com,DIRECT
+DOMAIN-SUFFIX,bing.com.cn,DIRECT
+DOMAIN-SUFFIX,bing.net,DIRECT
+DOMAIN-SUFFIX,day.app,DIRECT

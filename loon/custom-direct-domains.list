@@ -1,0 +1,5 @@
+# Loon 仅域名（远程规则里选策略=DIRECT）
+DOMAIN-SUFFIX,bing.com
+DOMAIN-SUFFIX,bing.com.cn
+DOMAIN-SUFFIX,bing.net
+DOMAIN-SUFFIX,day.app
