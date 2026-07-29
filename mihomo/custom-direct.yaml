@@ -1,6 +1,6 @@
+# behavior: domain — 仅域名列表，出口在主配置 RULE-SET,CustomDirect,DIRECT
 payload:
-  - SRC-IP-CIDR,192.168.4.142/32,DIRECT,no-resolve
-  - DOMAIN-SUFFIX,bing.com,DIRECT
-  - DOMAIN-SUFFIX,bing.com.cn,DIRECT
-  - DOMAIN-SUFFIX,bing.net,DIRECT
-  - DOMAIN-SUFFIX,day.app,DIRECT
+  - "+.bing.com"
+  - "+.bing.com.cn"
+  - "+.bing.net"
+  - "+.day.app"

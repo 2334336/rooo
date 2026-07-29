@@ -1,2 +1,3 @@
+# behavior: domain — 仅域名列表，出口在主配置 RULE-SET,CustomAI,人工智能
 payload:
-  - DOMAIN-SUFFIX,linux.do,人工智能
+  - "+.linux.do"
