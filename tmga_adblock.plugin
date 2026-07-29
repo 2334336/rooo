@@ -1,8 +1,0 @@
-#!name=腾讯手游加速器去广告
-#!desc=屏蔽腾讯手游加速器开屏/首页弹窗广告
-
-[Rewrite]
-^https:\/\/member\.tmga\.qq\.com:17070\/vip_charge\/ad\/get\/cfg reject-dict
-
-[MITM]
-hostname = member.tmga.qq.com
