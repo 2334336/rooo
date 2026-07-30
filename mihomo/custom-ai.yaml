@@ -1,3 +1,4 @@
 # behavior: domain — 仅域名列表，出口在主配置 RULE-SET,CustomAI,人工智能
 payload:
   - "+.linux.do"
+  - "+.anyrouter.top"
