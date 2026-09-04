@@ -1,44 +1,60 @@
-#!name= 微信小程序广告拦截（抓包 122）
-#!desc= 按 2026-09-04 抓包 122_1788505940449 中的明文广告流量编写。拦截激励视频 ads_svp_video、试玩广告 playable/wxapkg、广告 SDK 上报。不碰 mmtls，避免搞挂微信。
+#!name= 微信小程序广告拦截（抓包 122/123）
+#!desc= 对照 122+123 两份抓包：拦激励视频、试玩包、原生广告图、广点通、广告皮。mmtls 不动。拦完请清一次微信缓存。
 #!author= local
-#!openUrl= https://servicewechat.com/wx39923e171e63acf4/13/page-frame.html
-#!homepage= https://servicewechat.com/wx39923e171e63acf4/13/page-frame.html
+#!openUrl= https://github.com/2334336/rooo/blob/main/loon/WeChatMiniAdBlock.plugin
+#!homepage= https://github.com/2334336/rooo/tree/main/loon
 
-# 对应抓包：
-#   AppID     wx39923e171e63acf4  v13
-#   广告位    adunit-263dcea2cde86153
-#   试玩包    wx28a4f4446d1676f7 / playable.qpic.cn/wxdf37072dc5be7fd0/3.wxapkg
-#   视频 pos  3030046789020061 / 4071202390577885 / 5060180989186180
-#
-# 用法：Loon → 插件 → 添加本地插件 → 选这个文件 → 开启 MitM 和 Rewrite。
-# 若微信提示证书失败，只保留 [Rule] 里的域名拦截，把 [MITM] 里 wxs.qq.com 相关 hostname 删掉。
+# 122：明文视频/试玩/上报
+# 123：视频已没了，剩下 mmbiz 缓存图 + mmtls 原生广告
+# 清缓存：微信 → 设置 → 通用 → 存储空间 → 清理缓存
 
 [Rule]
-# 试玩广告主站（抓包里 3.wxapkg 的源站）
+# 激励视频 CDN（122 里 wxsmw 28 条全是 ads_svp_video）
+DOMAIN,wxsmw.wxs.qq.com,REJECT
+# 试玩广告包
 DOMAIN,playable.qpic.cn,REJECT
-# 广告 SDK 上报（visit / WeInnerAd / ad_traffic_split）
+# 朋友圈/广告视频封面
+DOMAIN,wxsnsdythumb.wxs.qq.com,REJECT
+DOMAIN,wxsnsdy.wxs.qq.com,REJECT
+DOMAIN,wxsnsdysnap.wxs.qq.com,REJECT
+# 广告 SDK 上报
 DOMAIN,report-online.sh.wxgateway.com,REJECT-DICT
+# 广点通（原生广告素材经常走这里，122/123 没明文出现但不拦会漏）
+DOMAIN-SUFFIX,gdt.qq.com,REJECT
+DOMAIN-SUFFIX,gdtimg.com,REJECT
+DOMAIN,pgdt.gtimg.cn,REJECT
+DOMAIN,adsmind.gdtimg.com,REJECT
+DOMAIN,vweixinthumb.tc.qq.com,REJECT
 
 [Rewrite]
-# ---------- 激励视频 / 封面（抓包核心） ----------
-# wxsmw.wxs.qq.com 本次 28 条全是 ads_svp_video_*.mp4
-^https?:\/\/wxsmw\.wxs\.qq\.com\/.+ads_svp_video_ - reject
-# 同一批广告的封面 jpeg
+# ---------- 激励视频 / 封面 ----------
+^https?:\/\/wxsmw\.wxs\.qq\.com\/ - reject
 ^https?:\/\/wximg\.wxs\.qq\.com\/.+ads_svp_video_ - reject
+# 122 漏拦：snscosdownload / snssvpdownload 广告图，不是聊天图
+^https?:\/\/wximg\.wxs\.qq\.com\/.+\/(snscosdownload|snssvpdownload|snsvideodownload)\/ - reject-img
+^https?:\/\/wxsnsdythumb\.wxs\.qq\.com\/ - reject-img
 
-# ---------- 试玩广告包 ----------
+# ---------- 试玩包 ----------
 ^https?:\/\/playable\.qpic\.cn\/ - reject
-# 302 之后的 cdntips 节点，host 会变，按路径拦
 ^https?:\/\/[^\/]*cdntips\.net\/playable\.qpic\.cn\/ - reject
-# 试玩小程序代码包 busi_id=1005 / app=wx28a4f4446d1676f7
 ^https?:\/\/prewxacode\.wxqcloud\.qq\.com\.cn\/weapp\/release_encrypt\/.*(busi_id=1005|app=wx28a4f4446d1676f7) - reject
+^https?:\/\/servicewechat\.com\/magicnewadplayable - reject
+
+# ---------- 原生广告图（123 还在请求，且走磁盘缓存 304） ----------
+# 两份抓包各打了 22 次的同一张 mmbiz PNG（770B，2022 年的图）
+^https?:\/\/mmbiz\.qpic\.cn\/mmbiz_png\/icTdbqWNOwNTTiaKet81gQJAic1IGjzG9g - reject-img
 
 # ---------- 广告 SDK 上报 ----------
 ^https?:\/\/report-online\.sh\.wxgateway\.com\/SdkReport - reject-dict
 
-# ---------- 广告 UI 皮（拦素材后残留图标） ----------
-^https?:\/\/wxa\.wxs\.qq\.com\/images\/wxapp\/(playable-|reward_ad_|reward-video-|drama_reward_) - reject
-^https?:\/\/wxa\.wxs\.qq\.com\/images\/skit\/drama_reward_ - reject
+# ---------- 微信容器广告皮（wxa 上的 wxapp/skit 基本都是广告 UI） ----------
+^https?:\/\/wxa\.wxs\.qq\.com\/images\/(wxapp|skit|factory)\/ - reject-img
+^https?:\/\/wxa\.wxs\.qq\.com\/wxad-design\/ - reject-img
+
+# ---------- 广点通兜底 ----------
+^https?:\/\/([a-z0-9-]+\.)?gdt\.qq\.com\/ - reject
+^https?:\/\/([a-z0-9-]+\.)?gdtimg\.com\/ - reject
+^https?:\/\/pgdt\.gtimg\.cn\/ - reject
 
 [MITM]
-hostname = playable.qpic.cn,wxsmw.wxs.qq.com,wximg.wxs.qq.com,wxa.wxs.qq.com,report-online.sh.wxgateway.com,prewxacode.wxqcloud.qq.com.cn,*.cdntips.net
+hostname = playable.qpic.cn,wxsmw.wxs.qq.com,wximg.wxs.qq.com,wxa.wxs.qq.com,wxsnsdythumb.wxs.qq.com,wxsnsdy.wxs.qq.com,mmbiz.qpic.cn,report-online.sh.wxgateway.com,prewxacode.wxqcloud.qq.com.cn,*.cdntips.net,servicewechat.com,*.gdt.qq.com,*.gdtimg.com,pgdt.gtimg.cn
